@@ -176,6 +176,21 @@ after which the control effort smoothly converges toward zero.
 
 ---
 
+## 🔹 Phase Portrait (`data/phase_portrait.png`)
+
+This phase portrait visualizes the pendulum trajectory in state-space
+(angle vs angular velocity). The closed-loop LQR controller drives the
+system toward the stable equilibrium at the origin while dissipating
+system energy through feedback damping.
+
+<p align="center">
+  <img src="data/phase_portrait.png"
+       width="600"
+       alt="Phase portrait">
+</p>
+
+---
+
 # Numerical Integration
 
 The simulation uses:
