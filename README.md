@@ -21,69 +21,51 @@ The implementation is written in **modern C++ (C++17)** using **Eigen** and buil
 
 The nonlinear pendulum dynamics are:
 
-\[
-\ddot{\theta}
-=
-\frac{g}{l}\sin(\theta)
-+
-\frac{1}{ml^2}\tau
-\]
+```text
+θ̈ = (g / l) sin(θ) + (1 / (m l²)) τ
+```
 
 State vector:
 
-\[
-x =
-\begin{bmatrix}
-\theta \\
-\dot{\theta}
-\end{bmatrix}
-\]
+```text
+x = [ θ
+      θ̇ ]
+```
 
 Linearized state-space model around the upright equilibrium:
 
-\[
-\dot{x} = Ax + Bu
-\]
+```text
+ẋ = A x + B u
+```
 
 where:
 
-\[
-A =
-\begin{bmatrix}
-0 & 1 \\
-g/l & 0
-\end{bmatrix}
-\]
+```text
+A = [ 0    1
+      g/l  0 ]
+```
 
-\[
-B =
-\begin{bmatrix}
-0 \\
-1/(ml^2)
-\end{bmatrix}
-\]
+```text
+B = [     0
+      1/(m l²) ]
+```
 
 The discrete-time LQR controller computes:
 
-\[
-u_k = -Kx_k
-\]
+```text
+uₖ = -K xₖ
+```
 
 by minimizing the quadratic cost:
 
-\[
-J =
-\sum_{k=0}^{\infty}
-\left(
-x_k^TQx_k + u_k^TRu_k
-\right)
-\]
+```text
+J = Σ (xₖᵀQxₖ + uₖᵀRuₖ)
+```
 
 where:
 
-- \(Q\) penalizes state error
-- \(R\) penalizes control effort
-
+- `Q` penalizes state error
+- `R` penalizes control effort
 ---
 
 # Repository Structure
